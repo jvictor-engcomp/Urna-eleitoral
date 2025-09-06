@@ -69,7 +69,7 @@ void campo_UF() {
             case 1: adicionar_uf( &u, q_uf);
                 break;
 
-            case 2:
+            case 2: mostrar_uf(u, q_uf);
                 break;
 
             case 3:
@@ -103,7 +103,7 @@ void conversa_uf() {
 void adicionar_uf(struct uf * *c, int *tam) {
     // * *c pois irei alterar o endereço que U quarda. *tam pois só irei alterar o que há no endereço de q_uf
     (*tam)++;
-    printf("%d\n", *tam);
+    //printf("%d\n", *tam); so pra verificar o tamanho
 
     struct uf *teste = realloc(*c, (*tam) * sizeof(struct uf));
     if (teste == NULL) {
@@ -122,5 +122,16 @@ void adicionar_uf(struct uf * *c, int *tam) {
     fflush(stdin);// Evitar problemas com buffer.
     fgets((*c + (*tam - 1))->sigla, 3, stdin);
 
-    printf("Pessoa adicionada com sucesso\n");
+    printf("UF adicionada com sucesso\n");
+}
+
+void mostrar_uf(struct uf *c, int *tam) {
+    printf("-------------------------------------------------------------------------------------------\n");
+    if (*tam == 0) printf("Sem UFs cadastradas");
+    else {
+        for (int i = 0 ; i < *tam ; i++) {
+            printf("Codigo [%d] ", c[i].codigo);
+            printf("%s\n\n", (c + i)->sigla);
+        }
+    }
 }
