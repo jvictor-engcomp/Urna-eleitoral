@@ -81,6 +81,15 @@ void campo_UF() {
             case 5:
                 break;
             case 6:
+                //salvando no arquivo e liberando memória alocada
+                fseek(fu, 0, SEEK_SET);
+                fwrite(u, sizeof(struct uf), *q_uf, fu);
+
+                fseek(fq, 0, SEEK_SET);
+                fwrite(q_uf, sizeof(int), 1, fq);
+
+                free(u);
+                free(q_uf);
                 return;
             default: printf("\nOpcao invalida\n");
 
@@ -101,7 +110,7 @@ void conversa_uf() {
 }
 
 void adicionar_uf(struct uf * *c, int *tam) {
-    // * *c pois irei alterar o endereço que U quarda. *tam pois só irei alterar o que há no endereço de q_uf
+    // * *c pois irei alterar o endereço que U guarda. *tam pois só irei alterar o que há no endereço de q_uf
     (*tam)++;
     //printf("%d\n", *tam); so pra verificar o tamanho
 
@@ -126,8 +135,8 @@ void adicionar_uf(struct uf * *c, int *tam) {
 }
 
 void mostrar_uf(struct uf *c, int *tam) {
-    printf("-------------------------------------------------------------------------------------------\n");
-    if (*tam == 0) printf("Sem UFs cadastradas");
+    printf("-----------------------------------------------------------------------------------------\n");
+    if (*tam == 0) printf("Sem UFs cadastradas\n");
     else {
         for (int i = 0 ; i < *tam ; i++) {
             printf("Codigo [%d] ", c[i].codigo);
