@@ -2,6 +2,7 @@
 #define UEFI_H
 
 struct uf {
+    int estado;// Serve para o programa saber se foi adicionado, apagado...
     int codigo;
     char sigla[3];
 };
@@ -10,4 +11,5 @@ struct uf {
 void conversa_uf();
 void adicionar_uf();
 void mostrar_uf();
+void excluir_uf();
 #endif //UEFI_H
