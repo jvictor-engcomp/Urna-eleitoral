@@ -1,0 +1,1 @@
+Crud na linguagem C. Contém variados conceitos da linguagem, como alocação dinamica e o uso de structs. Projeto feito em dupla, atualmente venho atualizando o projeto com novos conceitos de estrutura de dados.
